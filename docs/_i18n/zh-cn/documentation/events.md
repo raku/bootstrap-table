@@ -1,9 +1,9 @@
-# Events []({{ site.repo }}/blob/master/docs/_i18n/{{ site.lang }}/documentation/events.md)
+# 事件 []({{ site.repo }}/blob/master/docs/_i18n/{{ site.lang }}/documentation/events.md)
 
 ---
 
 <table class="table"
-       data-toggle="table"
+       id="e"
        data-search="true"
        data-show-toggle="true"
        data-show-columns="true"
@@ -88,6 +88,7 @@
         <td>
         Fires when user check a row, the parameters contains: <br>
         row: the record corresponding to the clicked row.
+        $element: the DOM element checked.
         </td>
     </tr>
     <tr>
@@ -97,6 +98,7 @@
         <td>
         Fires when user uncheck a row, the parameters contains: <br>
         row: the record corresponding to the clicked row.
+        $element: the DOM element unchecked.
         </td>
     </tr>
     <tr>
@@ -208,6 +210,12 @@
        <td>collapse-row.bs.table</td>
        <td>index, row</td>
        <td>当点击详细图片收起详细页面的时候触发。</td>
+    </tr>
+    <tr>
+       <td>onRefreshOptions</td>
+       <td>refresh-options.bs.table</td>
+       <td>options</td>
+       <td>Fires after refresh the options and before destroy and init the table</td>
     </tr>
     </tbody>
 </table>

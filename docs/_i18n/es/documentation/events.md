@@ -3,7 +3,7 @@
 ---
 
 <table class="table"
-       data-toggle="table"
+       id="e"
        data-search="true"
        data-show-toggle="true"
        data-show-columns="true"
@@ -87,6 +87,7 @@
         <td>
         Se ejecuta cuando el usuario chequea una fila, los parámetros contienen: <br>
         row: el registro que corresponde a la fila chequeada.
+        $element: el elemento DOM chequeado.
         </td>
     </tr>
     <tr>
@@ -96,6 +97,7 @@
         <td>
         Se ejecuta cuando el usuario des-chequea una fila, los parámetros contienen: <br>
         row: el registro que corresponde a la fila deschequeada.
+        $element: el elemento DOM deschequeado.
         </td>
     </tr>
     <tr>
@@ -195,6 +197,12 @@
        <td>collapse-row.bs.table</td>
        <td>index, row</td>
        <td>Se ejecuta cuando se da click al icono de detalle para colapsar la vista detalle.</td>
+    </tr>
+    <tr>
+       <td>onRefreshOptions</td>
+       <td>refresh-options.bs.table</td>
+       <td>options</td>
+       <td>Se ejecuta cuando se actualiza el objeto options, este método se ejecuta antes de los eventos destroy e init</td>
     </tr>
     </tbody>
 </table>

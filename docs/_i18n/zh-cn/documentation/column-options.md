@@ -1,11 +1,11 @@
-# Column options []({{ site.repo }}/blob/master/docs/_i18n/{{ site.lang }}/documentation/column-options.md)
+# 列参数 []({{ site.repo }}/blob/master/docs/_i18n/{{ site.lang }}/documentation/column-options.md)
 
 ---
 
 The column options is defined in `jQuery.fn.bootstrapTable.columnDefaults`.
 
 <table class="table"
-       data-toggle="table"
+       id="c"
        data-search="true"
        data-show-toggle="true"
        data-show-columns="true"
@@ -49,6 +49,13 @@ The column options is defined in `jQuery.fn.bootstrapTable.columnDefaults`.
         <td>The column title text.</td>
     </tr>
     <tr>
+        <td>titleTooltip</td>
+        <td>data-title-tooltip</td>
+        <td>String</td>
+        <td>undefined</td>
+        <td>The column title tooltip text. This option also support the title HTML attribute</td>
+    </tr>
+    <tr>
         <td>class</td>
         <td>class / data-class</td>
         <td>String</td>
@@ -56,11 +63,25 @@ The column options is defined in `jQuery.fn.bootstrapTable.columnDefaults`.
         <td>The column class name.</td>
     </tr>
     <tr>
+        <td>rowspan</td>
+        <td>rowspan / data-rowspan</td>
+        <td>Number</td>
+        <td>undefined</td>
+        <td>Indicate how many rows a cell should take up.</td>
+    </tr>
+    <tr>
+        <td>colspan</td>
+        <td>colspan / data-colspan</td>
+        <td>Number</td>
+        <td>undefined</td>
+        <td>Indicate how many columns a cell should take up.</td>
+    </tr>
+    <tr>
         <td>align</td>
         <td>data-align</td>
         <td>String</td>
         <td>undefined</td>
-        <td>Indicate how to align the column data. "left', 'right', 'center' can be used.</td>
+        <td>Indicate how to align the column data. 'left', 'right', 'center' can be used.</td>
     </tr>
     <tr>
         <td>halign</td>
@@ -114,7 +135,7 @@ The column options is defined in `jQuery.fn.bootstrapTable.columnDefaults`.
         <td>False to hide the columns item.</td>
     </tr>
     <tr>
-        <td>cardViewVisible</td>
+        <td>cardVisible</td>
         <td>data-card-visible</td>
         <td>Boolean</td>
         <td>true</td>
@@ -211,6 +232,15 @@ The column options is defined in `jQuery.fn.bootstrapTable.columnDefaults`.
         <td>true</td>
         <td>
         True to search data for this column.
+        </td>
+    </tr>
+    <tr>
+        <td>searchFormatter</td>
+        <td>data-search-formatter</td>
+        <td>Boolean</td>
+        <td>true</td>
+        <td>
+        True to search use formated data.
         </td>
     </tr>
 </tbody>

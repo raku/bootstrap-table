@@ -2,10 +2,10 @@
 
 ---
 
-The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
+The table options are defined in `jQuery.fn.bootstrapTable.defaults`.
 
 <table class="table"
-       data-toggle="table"
+       id="t"
        data-search="true"
        data-show-toggle="true"
        data-show-columns="true"
@@ -76,16 +76,28 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>'glyphicon'</td>
         <td>Defines icon set name ('glyphicon' or 'fa' for FontAwesome). By default 'glyphicon' is used. </td>
     </tr>
+     <tr>
+        <td>iconSize</td>
+        <td>data-icon-size</td>
+        <td>String</td>
+        <td>undefined</td>
+        <td>Defines icon size: <ul><li>undefined => btn</li><li>xs => btn-xs</li><li>sm => btn-sm</li><li>lg => btn-lg</li></ul>
+    </tr>
     <tr>
         <td>icons</td>
         <td>data-icons</td>
         <td>Object</td>
         <td>{<br/>
-        &nbsp;&nbsp;refresh: 'glyphicon-refresh icon-refresh',<br/>
-        &nbsp;&nbsp;toggle: 'glyphicon-list-alt icon-list-alt',<br/>
-        &nbsp;&nbsp;columns: 'glyphicon-th icon-th'<br/>
-        }</td>
-        <td>Defines icons that used for refresh, toggle and columns buttons</td>
+        &nbsp;&nbsp;<i>paginationSwitchDown:</i> 'glyphicon-collapse-down icon-chevron-down',<br/>
+        &nbsp;&nbsp;<i>paginationSwitchUp:</i> 'glyphicon-collapse-up icon-chevron-up',<br/>
+        &nbsp;&nbsp;<i>refresh:</i> 'glyphicon-refresh icon-refresh',<br/>
+        &nbsp;&nbsp;<i>toggle:</i> 'glyphicon-list-alt icon-list-alt',<br/>
+        &nbsp;&nbsp;<i>columns:</i> 'glyphicon-th icon-th',<br/>
+        &nbsp;&nbsp;<i>detailOpen:</i> 'glyphicon-plus icon-plus',<br/>
+        &nbsp;&nbsp;<i>detailClose:</i> 'glyphicon-minus icon-minus'<br/>
+        }
+        </td>
+        <td>Defines icons used in the toolbar, pagination, and details view.</td>
     </tr>
     <tr>
         <td>columns</td>
@@ -101,6 +113,13 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>Array</td>
         <td>[]</td>
         <td>The data to be loaded.</td>
+    </tr>
+    <tr>
+        <td>dataField</td>
+        <td>data-data-field</td>
+        <td>String</td>
+        <td>'rows'</td>
+        <td>Key in incoming json containing rows data list.</td>
     </tr>
     <tr>
         <td>ajax</td>
@@ -121,7 +140,15 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>data-url</td>
         <td>String</td>
         <td>undefined</td>
-        <td>A URL to request data from remote site.</td>
+        <td>
+        	A URL to request data from remote site.
+        	<br/>Note that the required server response format is different depending on whether the 'sidePagination'
+        	option is specified. See the following examples:
+        	<ul>
+        		<li><a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/json/data1.json">Without server-side pagination</a></li>
+        		<li><a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/json/data2.json">With server-side pagination</a></li>
+        	</ul>
+        </td>
     </tr>
     <tr>
         <td>cache</td>
@@ -157,7 +184,7 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>Function</td>
         <td>function(params) {<br>return params;<br>}</td>
         <td>
-        When requesting remote data, you can send additional parameters by modifying queryParams. 
+        When requesting remote data, you can send additional parameters by modifying queryParams.
         If queryParamsType = 'limit', the params object contains: <br>
         limit, offset, search, sort, order
         Else, it contains: <br>
@@ -190,11 +217,27 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>True to show a pagination toolbar on table bottom.</td>
     </tr>
     <tr>
+        <td>onlyInfoPagination</td>
+        <td>data-only-info-pagination</td>
+        <td>Boolean</td>
+        <td>false</td>
+        <td>True to show only the quantity of the data that is showing in the table. It needs the pagination table options is set to true.</td>
+    </tr>
+    <tr>
         <td>sidePagination</td>
         <td>data-side-pagination</td>
         <td>String</td>
         <td>'client'</td>
-        <td>Defines the side pagination of table, can only be 'client' or 'server'. Using 'server' side requires either setting the 'url' or 'ajax' option</td>
+        <td>
+        	Defines the side pagination of table, can only be 'client' or 'server'.
+        	Using 'server' side requires either setting the 'url' or 'ajax' option.
+        	<br/>Note that the required server response format is different depending on whether
+        	the 'client' or 'server' option is specified. See the following examples:
+        	<ul>
+        		<li><a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/json/data1.json">Without server-side pagination</a></li>
+        		<li><a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/json/data2.json">With server-side pagination</a></li>
+        	</ul>
+        </td>
     </tr>
     <tr>
         <td>pageNumber</td>
@@ -232,11 +275,34 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>True to display pagination or card view smartly.</td>
     </tr>
     <tr>
+        <td>escape</td>
+        <td>data-escape</td>
+        <td>Boolean</td>
+        <td>false</td>
+        <td>Escapes a string for insertion into HTML,
+        replacing <code>&</code>, <code><</code>, <code>></code>,
+        <code>"</code>, <code>`</code>, and <code>'</code> characters.</td>
+    </tr>
+    <tr>
         <td>search</td>
         <td>data-search</td>
         <td>Boolean</td>
         <td>false</td>
         <td>Enable the search input.</td>
+    </tr>
+    <tr>
+        <td>searchOnEnterKey</td>
+        <td>data-search-on-enter-key</td>
+        <td>Boolean</td>
+        <td>false</td>
+        <td>The search method will be executed until the Enter key is pressed.</td>
+    </tr>
+    <tr>
+        <td>strictSearch</td>
+        <td>data-strict-search</td>
+        <td>Boolean</td>
+        <td>false</td>
+        <td>Enable the strict search.</td>
     </tr>
 	<tr>
         <td>searchText</td>
@@ -307,7 +373,7 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>data-minimum-count-columns</td>
         <td>Number</td>
         <td>1</td>
-        <td>The minimum count columns to hide of the columns drop down list.
+        <td>The minimum number of columns to hide from the columns drop down list.
         </td>
     </tr>
     <tr>
@@ -342,8 +408,8 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>detailFormatter</td>
         <td>data-detail-formatter</td>
         <td>Function</td>
-        <td>function(index, row) {<br>return '';<br>}</td>
-        <td>Format your detail view when <code>detailView</code> is set to <code>true</code>.</td>
+        <td>function(index, row, element) {<br>return '';<br>}</td>
+        <td>Format your detail view when <code>detailView</code> is set to <code>true</code>. Return a String and it will be appended into the detail view cell, optionally render the element directly using the third parameter which is a jQuery element of the target cell.</td>
     </tr>
     <tr>
         <td>searchAlign</td>
@@ -388,13 +454,6 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>Indicate how to align the pagination detail. 'left', 'right' can be used.</td>
     </tr>
     <tr>
-        <td>paginationFirstText</td>
-        <td>data-pagination-first-text</td>
-        <td>String</td>
-        <td>'&lt;&lt;'</td>
-        <td>Indicate the icon or text to be shown in the pagination detail, the first button of the pagination detail.</td>
-    </tr>
-    <tr>
         <td>paginationPreText</td>
         <td>data-pagination-pre-text</td>
         <td>String</td>
@@ -409,18 +468,11 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>Indicate the icon or text to be shown in the pagination detail, the next button.</td>
     </tr>
     <tr>
-        <td>paginationLastText</td>
-        <td>data-pagination-last-text</td>
-        <td>String</td>
-        <td>'&gt;&gt;'</td>
-        <td>Indicate the icon or text to be shown in the pagination detail, the last button.</td>
-    </tr>
-    <tr>
         <td>clickToSelect</td>
         <td>data-click-to-select</td>
         <td>Boolean</td>
         <td>false</td>
-        <td>True to select checkbox or radiobox when click rows.</td>
+        <td>True to select checkbox or radiobox when clicking rows.</td>
     </tr>
     <tr>
         <td>singleSelect</td>
@@ -432,11 +484,11 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
     <tr>
         <td>toolbar</td>
         <td>data-toolbar</td>
-        <td>String</td>
+        <td>String | Node</td>
         <td>undefined</td>
         <td>
-        A jQuery selector that indicate the toolbar, for example:<br>
-        #toolbar, .toolbar.
+        A jQuery selector that indicates the toolbar, for example:<br>
+        #toolbar, .toolbar, or a DOM node.
         </td>
     </tr>
     <tr>
@@ -461,15 +513,30 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>False to disable sortable of all columns.</td>
     </tr>
     <tr>
+        <td>silentSort</td>
+        <td>data-silent-sort</td>
+        <td>Boolean</td>
+        <td>true</td>
+        <td>Set <code>false</code> to sort the data silently. This options works when the sidePagination option is set to <code>server</code>.</td>
+    </tr>
+    <tr>
         <td>rowStyle</td>
         <td>data-row-style</td>
         <td>Function</td>
         <td>{}</td>
         <td>
-        The row style formatter function, take two parameters: <br>
+        The row style formatter function, takes two parameters: <br>
         row: the row record data.<br>
         index: the row index.<br>
-        Support classes or css.
+        Support classes or css. Example usage:<br>
+<pre>
+function rowStyle(value, row, index) {
+  return {
+    classes: 'text-nowrap another-class',
+    css: {"color": "blue", "font-size": "50px"}
+  };
+}
+</pre>
         </td>
     </tr>
     <tr>
@@ -478,11 +545,30 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>Function</td>
         <td>{}</td>
         <td>
-        The row attribute formatter function, take two parameters: <br>
+        The row attribute formatter function, takes two parameters: <br>
         row: the row record data.<br>
         index: the row index.<br>
         Support all custom attributes.
         </td>
     </tr>
-    </tbody>
+     <tr>
+        <td>locale</td>
+        <td>data-locale</td>
+        <td>string</td>
+        <td>undefined</td>
+        <td>
+        Sets the locale to use (i.e. <code>'fr-CA'</code>). Locale files must be pre-loaded.
+        Allows for fallback locales, if loaded, in the following order:<br>
+        <ol>
+        <li>First tries for the locale as specified,</li>
+        <li>Then tries the locale with <code>'_'</code> translated to
+        <code>'-'</code> and the region code upper cased,</li>
+        <li>Then tries the the short locale code (i.e. <code>'fr'</code> instead of <code>'fr-CA'</code>),</li>
+        <li>And finally will use the last locale file loaded (or the default locale if no locales loaded).</li>
+        </ol>
+        If left undfined or an empty string, uses the last locale loaded (or <code>'en-US'</code>
+        if no locale files loaded).
+        </td>
+    </tr>
+   </tbody>
 </table>

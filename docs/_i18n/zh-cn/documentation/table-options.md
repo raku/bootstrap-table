@@ -1,22 +1,22 @@
-# Table options []({{ site.repo }}/blob/master/docs/_i18n/{{ site.lang }}/documentation/table-options.md)
+# 表格参数 []({{ site.repo }}/blob/master/docs/_i18n/{{ site.lang }}/documentation/table-options.md)
 
 ---
 
-The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
+表格的参数定义在 `jQuery.fn.bootstrapTable.defaults`。
 
 <table class="table"
-       data-toggle="table"
+       id="t"
        data-search="true"
        data-show-toggle="true"
        data-show-columns="true"
        data-mobile-responsive="true">
     <thead>
     <tr>
-        <th>Name</th>
-        <th>Attribute</th>
-        <th>Type</th>
-        <th>Default</th>
-        <th>Description</th>
+        <th>名称</th>
+        <th>标签</th>
+        <th>类型</th>
+        <th>默认</th>
+        <th>描述</th>
     </tr>
     </thead>
     <tbody>
@@ -25,21 +25,21 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>data-toggle</td>
         <td>String</td>
         <td>'table'</td>
-        <td>Activate bootstrap table without writing JavaScript.</td>
+        <td>不用写 JavaScript 直接启用表格。</td>
     </tr>
     <tr>
         <td>classes</td>
         <td>data-classes</td>
         <td>String</td>
         <td>'table table-hover'</td>
-        <td>The class name of table. By default, the table is bordered, you can add 'table-no-bordered' to remove table-bordered style.</td>
+        <td>表格的类名称。默认情况下，表格是有边框的，你可以添加 'table-no-bordered' 来删除表格的边框样式。</td>
     </tr>
     <tr>
         <td>height</td>
         <td>data-height</td>
         <td>Number</td>
         <td>undefined</td>
-        <td>The height of table.</td>
+        <td>定义表格的高度。</td>
     </tr>
     <tr>
         <td>undefinedText</td>
@@ -157,7 +157,7 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>Function</td>
         <td>function(params) {<br>return params;<br>}</td>
         <td>
-        When requesting remote data, you can send additional parameters by modifying queryParams. 
+        When requesting remote data, you can send additional parameters by modifying queryParams.
         If queryParamsType = 'limit', the params object contains: <br>
         limit, offset, search, sort, order
         Else, it contains: <br>
@@ -188,6 +188,13 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>Boolean</td>
         <td>false</td>
         <td>True to show a pagination toolbar on table bottom.</td>
+    </tr>
+    <tr>
+        <td>onlyInfoPagination</td>
+        <td>data-only-info-pagination</td>
+        <td>Boolean</td>
+        <td>false</td>
+        <td>True to show only the quantity of the data that is showing in the table. It needs the pagination table options is set to true.</td>
     </tr>
     <tr>
         <td>sidePagination</td>
@@ -232,11 +239,33 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>True to display pagination or card view smartly.</td>
     </tr>
     <tr>
+        <td>escape</td>
+        <td>data-escape</td>
+        <td>Boolean</td>
+        <td>false</td>
+        <td>转义HTML字符串，替换 <code>&</code>, <code><</code>,
+        <code>></code>, <code>"</code>, <code>`</code>, 和 <code>'</code> 字符.</td>
+    </tr>
+    <tr>
         <td>search</td>
         <td>data-search</td>
         <td>Boolean</td>
         <td>false</td>
         <td>Enable the search input.</td>
+    </tr>
+    <tr>
+        <td>searchOnEnterKey</td>
+        <td>data-search-on-enter-key</td>
+        <td>Boolean</td>
+        <td>false</td>
+        <td>The search method will be executed until the Enter key is pressed.</td>
+    </tr>
+    <tr>
+        <td>strictSearch</td>
+        <td>data-strict-search</td>
+        <td>Boolean</td>
+        <td>false</td>
+        <td>Enable the strict search.</td>
     </tr>
 	<tr>
         <td>searchText</td>
@@ -388,13 +417,6 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>Indicate how to align the pagination detail. 'left', 'right' can be used.</td>
     </tr>
     <tr>
-        <td>paginationFirstText</td>
-        <td>data-pagination-first-text</td>
-        <td>String</td>
-        <td>'&lt;&lt;'</td>
-        <td>Indicate the icon or text to be shown in the pagination detail, the first button of the pagination detail.</td>
-    </tr>
-    <tr>
         <td>paginationPreText</td>
         <td>data-pagination-pre-text</td>
         <td>String</td>
@@ -407,13 +429,6 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>String</td>
         <td>'&gt;'</td>
         <td>Indicate the icon or text to be shown in the pagination detail, the next button.</td>
-    </tr>
-    <tr>
-        <td>paginationLastText</td>
-        <td>data-pagination-last-text</td>
-        <td>String</td>
-        <td>'&gt;&gt;'</td>
-        <td>Indicate the icon or text to be shown in the pagination detail, the last button.</td>
     </tr>
     <tr>
         <td>clickToSelect</td>
@@ -459,6 +474,13 @@ The table options is defined in `jQuery.fn.bootstrapTable.defaults`.
         <td>Boolean</td>
         <td>true</td>
         <td>False to disable sortable of all columns.</td>
+    </tr>
+    <tr>
+        <td>silentSort</td>
+        <td>data-silent-sort</td>
+        <td>Boolean</td>
+        <td>true</td>
+        <td>Set <code>false</code> to sort the data silently. This options works when the sidePagination option is set to <code>server</code>.</td>
     </tr>
     <tr>
         <td>rowStyle</td>

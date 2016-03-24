@@ -5,7 +5,7 @@
 Las propiedades de la columna están definidas en `jQuery.fn.bootstrapTable.columnDefaults`.
 
 <table class="table"
-       data-toggle="table"
+       id="c"
        data-search="true"
        data-show-toggle="true"
        data-show-columns="true"
@@ -49,6 +49,13 @@ Las propiedades de la columna están definidas en `jQuery.fn.bootstrapTable.colu
         <td>El título de la columna.</td>
     </tr>
     <tr>
+        <td>titleTooltip</td>
+        <td>data-title-tooltip</td>
+        <td>String</td>
+        <td>undefined</td>
+        <td>Texto del title tooltip de la columna. Esta opción soporta el tag title de HTML.</td>
+    </tr>
+    <tr>
         <td>class</td>
         <td>class / data-class</td>
         <td>String</td>
@@ -56,11 +63,25 @@ Las propiedades de la columna están definidas en `jQuery.fn.bootstrapTable.colu
         <td>La clase CSS de la columna.</td>
     </tr>
     <tr>
+        <td>rowspan</td>
+        <td>rowspan / data-rowspan</td>
+        <td>Number</td>
+        <td>undefined</td>
+        <td>Indica cuantas filas debe tomar una celda.</td>
+    </tr>
+    <tr>
+        <td>colspan</td>
+        <td>colspan / data-colspan</td>
+        <td>Number</td>
+        <td>undefined</td>
+        <td>indica cuantas columnas debe tomar una celda.</td>
+    </tr>
+    <tr>
         <td>align</td>
         <td>data-align</td>
         <td>String</td>
         <td>undefined</td>
-        <td>Indica cómo se alinea la columna. Se puede usar "left', 'right', 'center'.</td>
+        <td>Indica cómo se alinea la columna. Se puede usar 'left', 'right', 'center'.</td>
     </tr>
     <tr>
         <td>halign</td>
@@ -113,7 +134,7 @@ Las propiedades de la columna están definidas en `jQuery.fn.bootstrapTable.colu
         <td>False para ocultar el item de la columna.</td>
     </tr>
 	<tr>
-        <td>cardViewVisible</td>
+        <td>cardVisible</td>
         <td>data-card-visible</td>
         <td>Boolean</td>
         <td>true</td>
@@ -207,6 +228,15 @@ Las propiedades de la columna están definidas en `jQuery.fn.bootstrapTable.colu
         <td>Boolean</td>
         <td>true</td>
         <td>True para incluir la columna en la búsqueda.</td>
+    </tr>
+    <tr>
+        <td>searchFormatter</td>
+        <td>data-search-formatter</td>
+        <td>Boolean</td>
+        <td>true</td>
+        <td>
+        True to search use formated data.
+        </td>
     </tr>
     </tbody>
 </table>
